@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf /Users/ismail/Desktop/exactiptv.com/.git)",
+      "Bash(rm -rf /Users/ismail/Desktop/exactiptv.com/node_modules)",
+      "Bash(xargs sed -i '' -e 's|https://iptvservice\\\\.pro|https://exactiptv.com|g' -e 's|iptvservice\\\\.pro|exactiptv.com|g' -e 's|\"IPTV Service\"|\"Exact IPTV\"|g' -e 's|By IPTV Service|By Exact IPTV|g' -e 's|'\\\\''IPTV Service'\\\\''|'\\\\''Exact IPTV'\\\\''|g')",
+      "Bash(xargs sed -i '' -e 's|IPTV Service Subscription|Exact IPTV Subscription|g' -e 's|IPTV Service Blog|Exact IPTV Blog|g' -e 's|IPTV Service Xtream Codes credentials|Exact IPTV Xtream Codes credentials|g' -e 's|IPTV Service username and password|Exact IPTV username and password|g' -e 's|IPTV Service credentials|Exact IPTV credentials|g' -e 's|IPTV Service M3U URL|Exact IPTV M3U URL|g' -e 's|IPTV Service founded|Exact IPTV founded|g' -e 's|about IPTV Service|about Exact IPTV|g' -e 's|using IPTV Service|using Exact IPTV|g' -e 's|and IPTV Service \\(&quot;we&quot;|and Exact IPTV \\(\\\\&quot;we\\\\&quot;|g' -e 's|by IPTV Service\\\\. Please|by Exact IPTV. Please|g' -e 's|law, IPTV Service shall|law, Exact IPTV shall|g' -e 's|IPTV Service provides an|Exact IPTV provides an|g')",
+      "Bash(sed -i '' -e 's|IPTV Service \\(&quot;we&quot;, &quot;our&quot;, &quot;us&quot;\\) is committed|Exact IPTV \\(\\\\&quot;we\\\\&quot;, \\\\&quot;our\\\\&quot;, \\\\&quot;us\\\\&quot;\\) is committed|g' app/[lang]/privacy/page.tsx)",
+      "Bash(sed -i '' -e 's|operated by IPTV Service \\(&quot;we&quot;, &quot;us&quot;, &quot;our&quot;\\)|operated by Exact IPTV \\(\\\\&quot;we\\\\&quot;, \\\\&quot;us\\\\&quot;, \\\\&quot;our\\\\&quot;\\)|g' -e 's|binding agreement between you and IPTV Service\\\\.|binding agreement between you and Exact IPTV.|g' app/[lang]/terms/page.tsx)",
+      "Bash(sed -i '' -e 's|started with IPTV Service\\\\?|started with Exact IPTV?|g' app/[lang]/pricing/page.tsx)",
+      "Bash(python3 -)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(sed -i '' -e 's/badge: '\\\\''Premium IPTV Service'\\\\'', headline: '\\\\''The Best\\\\\\\\nIPTV Service\\\\\\\\nProvider'\\\\''/badge: '\\\\''Exact IPTV'\\\\'', headline: '\\\\''The Best\\\\\\\\nExact IPTV\\\\\\\\nProvider'\\\\''/' -e 's/streaming tips from IPTV Service\\\\./streaming tips from Exact IPTV./' locales/en.ts)",
+      "Bash(sed -i '' -e 's/badge: '\\\\''Premium IPTV Service'\\\\'', headline: '\\\\''Der Beste\\\\\\\\nIPTV Service\\\\\\\\nAnbieter'\\\\''/badge: '\\\\''Exact IPTV'\\\\'', headline: '\\\\''Der Beste\\\\\\\\nExact IPTV\\\\\\\\nAnbieter'\\\\''/' locales/de.ts)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(grep -rn 'params\\\\.lang\\\\|/${lang}' /Users/ismail/Desktop/exactiptv.com/app /Users/ismail/Desktop/exactiptv.com/components --include=\"*.tsx\" --include=\"*.ts\")",
+      "Bash(python3)"
+    ]
+  }
+}
