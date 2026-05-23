@@ -17,7 +17,11 @@
       "Bash(npm install *)",
       "Bash(npm run *)",
       "Bash(grep -rn 'params\\\\.lang\\\\|/${lang}' /Users/ismail/Desktop/exactiptv.com/app /Users/ismail/Desktop/exactiptv.com/components --include=\"*.tsx\" --include=\"*.ts\")",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(git push *)",
+      "Bash(node -e \"require\\('sharp'\\)\")",
+      "Bash(node -e \"const z=require\\('zlib'\\);console.log\\('zlib ok'\\)\")",
+      "Bash(node scripts/gen-favicon.mjs)"
     ]
   }
 }
