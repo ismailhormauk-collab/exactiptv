@@ -15,14 +15,19 @@ export default function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontWeight: 900,
-          fontSize: 19,
-          color: 'white',
-          fontFamily: 'system-ui, sans-serif',
-          letterSpacing: '-0.5px',
         }}
       >
-        E
+        {/* Play triangle via CSS border trick */}
+        <div
+          style={{
+            width: 0,
+            height: 0,
+            borderTop: '7px solid transparent',
+            borderBottom: '7px solid transparent',
+            borderLeft: '12px solid white',
+            marginLeft: 3,
+          }}
+        />
       </div>
     ),
     { ...size }
