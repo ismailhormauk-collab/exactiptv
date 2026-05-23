@@ -7,7 +7,7 @@ import Script from "next/script";
 import { getDictionary } from "@/locales/getDictionary";
 import { LOCALES } from "@/locales/types";
 import type { Locale } from "@/locales/types";
-import { localePath, localeUrl } from "@/lib/url";
+import { localePath, localeUrl, hreflangAlternates } from "@/lib/url";
 
 export function generateStaticParams() {
   return LOCALES.map(lang => ({ lang }));
@@ -20,13 +20,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     description: dict.pages.faq.description,
     alternates: {
       canonical: localeUrl(params.lang, '/faq'),
-      languages: {
-        en: "https://exactiptv.com/en/faq",
-        fr: "https://exactiptv.com/fr/faq",
-        de: "https://exactiptv.com/de/faq",
-        es: "https://exactiptv.com/es/faq",
-        "x-default": "https://exactiptv.com/en/faq",
-      },
+      languages: hreflangAlternates('/faq'),
     },
     openGraph: {
       title: dict.pages.faq.title,

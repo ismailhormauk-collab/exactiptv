@@ -7,7 +7,7 @@ import Script from "next/script";
 import { getDictionary } from "@/locales/getDictionary";
 import { LOCALES } from "@/locales/types";
 import type { Locale } from "@/locales/types";
-import { localePath, localeUrl } from "@/lib/url";
+import { localePath, localeUrl, hreflangAlternates } from "@/lib/url";
 
 export function generateStaticParams() {
   return LOCALES.map(lang => ({ lang }));
@@ -20,13 +20,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     description: dict.pages.pricing.description,
     alternates: {
       canonical: localeUrl(params.lang, '/pricing'),
-      languages: {
-        en: "https://exactiptv.com/en/pricing",
-        fr: "https://exactiptv.com/fr/pricing",
-        de: "https://exactiptv.com/de/pricing",
-        es: "https://exactiptv.com/es/pricing",
-        "x-default": "https://exactiptv.com/en/pricing",
-      },
+      languages: hreflangAlternates('/pricing'),
     },
     openGraph: {
       title: dict.pages.pricing.title,

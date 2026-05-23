@@ -7,6 +7,7 @@ import Script from "next/script";
 import { getDictionary } from "@/locales/getDictionary";
 import { LOCALES } from "@/locales/types";
 import type { Locale } from "@/locales/types";
+import { localePath, localeUrl, hreflangAlternates } from "@/lib/url";
 
 export function generateStaticParams() {
   return LOCALES.map(lang => ({ lang }));
@@ -18,20 +19,14 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     title: dict.pages.blog.title,
     description: dict.pages.blog.description,
     alternates: {
-      canonical: `https://exactiptv.com/${params.lang}/blog`,
-      languages: {
-        en: "https://exactiptv.com/en/blog",
-        fr: "https://exactiptv.com/fr/blog",
-        de: "https://exactiptv.com/de/blog",
-        es: "https://exactiptv.com/es/blog",
-        "x-default": "https://exactiptv.com/en/blog",
-      },
+      canonical: localeUrl(params.lang, '/blog'),
+      languages: hreflangAlternates('/blog'),
     },
     openGraph: {
       title: dict.pages.blog.title,
       description: dict.pages.blog.description,
       type: "website",
-      url: `https://exactiptv.com/${params.lang}/blog`,
+      url: localeUrl(params.lang, '/blog'),
       siteName: "Exact IPTV",
     },
     twitter: {
@@ -41,14 +36,6 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     },
   };
 }
-
-const blogListSchema = {
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  name: "Exact IPTV Blog",
-  description: "IPTV guides, reviews, and buying advice",
-  url: "https://exactiptv.com/blog",
-};
 
 const categoryStyle: Record<string, string> = {
   "Guide":        "text-violet-400 bg-violet-500/10 border-violet-500/20",
@@ -65,6 +52,14 @@ function formatDate(dateStr: string) {
 export default async function BlogPage({ params }: { params: { lang: string } }) {
   const dict = await getDictionary(params.lang as Locale);
   const p = dict.pages.blog;
+
+  const blogListSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Exact IPTV Blog",
+    description: "IPTV guides, reviews, and buying advice",
+    url: localeUrl(params.lang, '/blog'),
+  };
 
   return (
     <>
@@ -92,7 +87,7 @@ export default async function BlogPage({ params }: { params: { lang: string } })
               {blogPosts.map(post => (
                 <Link
                   key={post.slug}
-                  href={`/${params.lang}/blog/${post.slug}`}
+                  href={localePath(params.lang, `/blog/${post.slug}`)}
                   className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.07] bg-slate-950 hover:border-violet-500/40 hover:shadow-[0_0_0_1px_rgba(139,92,246,0.12),0_4px_28px_rgba(109,40,217,0.14)] hover:-translate-y-1 transition-all duration-300"
                 >
                   {/* Thumbnail — padding-top 16:9 trick */}

@@ -6,6 +6,7 @@ import { Clock, Calendar, ArrowLeft, MessageCircle, ChevronRight } from "lucide-
 import { blogPosts, getBlogPost, getRelatedPosts } from "@/data/blog-posts";
 import Script from "next/script";
 import { LOCALES } from "@/locales/types";
+import { localePath, localeUrl, hreflangAlternates } from "@/lib/url";
 
 interface Props {
   params: { lang: string; slug: string };
@@ -31,14 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.metaTitle,
     description: post.metaDescription,
     alternates: {
-      canonical: `https://exactiptv.com/${params.lang}/blog/${post.slug}`,
-      languages: {
-        en: `https://exactiptv.com/en/blog/${post.slug}`,
-        fr: `https://exactiptv.com/fr/blog/${post.slug}`,
-        de: `https://exactiptv.com/de/blog/${post.slug}`,
-        es: `https://exactiptv.com/es/blog/${post.slug}`,
-        "x-default": `https://exactiptv.com/en/blog/${post.slug}`,
-      },
+      canonical: localeUrl(params.lang, `/blog/${post.slug}`),
+      languages: hreflangAlternates(`/blog/${post.slug}`),
     },
     openGraph: {
       title: post.metaTitle,
@@ -48,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       modifiedTime: post.publishedAt,
       authors: ["Exact IPTV"],
       section: post.category,
-      url: `https://exactiptv.com/${params.lang}/blog/${post.slug}`,
+      url: localeUrl(params.lang, `/blog/${post.slug}`),
       siteName: "Exact IPTV",
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: post.title }],
     },
@@ -77,7 +72,7 @@ function renderContent(md: string, lang: string): string {
     .replace(/^\- (.+)$/gm, '<li class="text-slate-300 text-sm leading-relaxed pl-1">$1</li>')
     .replace(/(<li[\s\S]+?<\/li>)/g, '<ul class="list-disc list-inside space-y-1.5 my-3 ml-2">$1</ul>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, url) => {
-      const href = url.startsWith('/') ? `/${lang}${url}` : url;
+      const href = url.startsWith('/') ? localePath(lang, url) : url;
       return `<a href="${href}" class="text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors">${text}</a>`;
     })
     .replace(/\n\n/g, '</p><p class="text-slate-300 text-[15px] leading-relaxed my-4">')
@@ -100,16 +95,16 @@ export default function BlogPostPage({ params }: Props) {
     dateModified: post.publishedAt,
     author: { "@type": "Organization", name: "Exact IPTV" },
     publisher: { "@type": "Organization", name: "Exact IPTV", logo: { "@type": "ImageObject", url: "https://exactiptv.com/logo.png" } },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://exactiptv.com/${params.lang}/blog/${post.slug}` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": localeUrl(params.lang, `/blog/${post.slug}`) },
   };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `https://exactiptv.com/${params.lang}` },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `https://exactiptv.com/${params.lang}/blog` },
-      { "@type": "ListItem", position: 3, name: post.title, item: `https://exactiptv.com/${params.lang}/blog/${post.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: localeUrl(params.lang, '/') },
+      { "@type": "ListItem", position: 2, name: "Blog", item: localeUrl(params.lang, '/blog') },
+      { "@type": "ListItem", position: 3, name: post.title, item: localeUrl(params.lang, `/blog/${post.slug}`) },
     ],
   };
 
@@ -134,9 +129,9 @@ export default function BlogPostPage({ params }: Props) {
           {/* Breadcrumb overlay */}
           <div className="absolute bottom-0 left-0 right-0 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
             <nav className="flex items-center gap-2 text-xs text-slate-400 mb-4">
-              <Link href={`/${params.lang}`} className="hover:text-violet-400 transition-colors">Home</Link>
+              <Link href={localePath(params.lang, '/')} className="hover:text-violet-400 transition-colors">Home</Link>
               <ChevronRight className="w-3 h-3" />
-              <Link href={`/${params.lang}/blog`} className="hover:text-violet-400 transition-colors">Blog</Link>
+              <Link href={localePath(params.lang, '/blog')} className="hover:text-violet-400 transition-colors">Blog</Link>
               <ChevronRight className="w-3 h-3" />
               <span className="text-slate-300 truncate max-w-[240px]">{post.title}</span>
             </nav>
@@ -182,7 +177,7 @@ export default function BlogPostPage({ params }: Props) {
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <Link
-                    href={`/${params.lang}/pricing`}
+                    href={localePath(params.lang, '/pricing')}
                     className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold rounded-xl hover:scale-[1.02] transition-all shadow-lg shadow-purple-500/20 text-sm"
                   >
                     View Pricing Plans
@@ -202,7 +197,7 @@ export default function BlogPostPage({ params }: Props) {
               {/* Back link */}
               <div className="mt-8">
                 <Link
-                  href={`/${params.lang}/blog`}
+                  href={localePath(params.lang, '/blog')}
                   className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 transition-colors text-sm font-medium"
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -257,7 +252,7 @@ export default function BlogPostPage({ params }: Props) {
                   {related.map(rel => (
                     <Link
                       key={rel.slug}
-                      href={`/${params.lang}/blog/${rel.slug}`}
+                      href={localePath(params.lang, `/blog/${rel.slug}`)}
                       className="group flex gap-3 items-start rounded-xl p-3 border border-white/[0.05] hover:border-violet-500/25 bg-white/[0.02] transition-all"
                     >
                       {/* Fixed-size thumbnail, absolute-fill */}
