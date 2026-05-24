@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MessageCircle, Mail, Clock, ChevronRight, Zap, Shield, Star } from "lucide-react";
+import { MessageCircle, Mail, Clock, ChevronRight, Zap, Star } from "lucide-react";
 import { getDictionary } from "@/locales/getDictionary";
 import { LOCALES } from "@/locales/types";
 import type { Locale } from "@/locales/types";
@@ -83,21 +83,21 @@ export default async function ContactPage({ params }: { params: { lang: string }
           {supportOptions.map((option) => {
             const Icon = option.icon;
             return (
-              <div key={option.title} className="glass rounded-2xl p-8 border border-white/10 text-center">
-                <div className="w-16 h-16 glass rounded-2xl flex items-center justify-center mx-auto mb-5 border border-white/10">
-                  <Icon className="w-8 h-8 text-purple-400" />
+              <div key={option.title} className="glass rounded-2xl p-5 sm:p-8 border border-white/10 text-center flex flex-col items-center">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 glass rounded-2xl flex items-center justify-center mb-4 border border-white/10">
+                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-purple-400" />
                 </div>
-                <h2 className="text-white font-bold text-xl mb-2">{option.title}</h2>
-                <p className="text-gray-400 text-sm mb-3">{option.description}</p>
+                <h2 className="text-white font-bold text-lg sm:text-xl mb-2">{option.title}</h2>
+                <p className="text-gray-400 text-sm mb-3 max-w-xs">{option.description}</p>
                 <p className="text-purple-400 font-semibold text-sm mb-1">{option.contact}</p>
-                <p className={`text-xs font-medium mb-6 ${option.availableColor}`}>{option.available}</p>
+                <p className={`text-xs font-medium mb-5 ${option.availableColor}`}>{option.available}</p>
                 <a
                   href={option.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 px-6 py-3 ${option.buttonClass} font-bold rounded-xl transition-all hover:scale-105 shadow-lg`}
+                  className={`inline-flex w-full sm:w-auto justify-center items-center gap-2 px-6 py-3 ${option.buttonClass} font-bold rounded-xl transition-all hover:scale-105 shadow-lg`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-4 h-4 shrink-0" />
                   {option.buttonText}
                 </a>
               </div>
@@ -108,16 +108,16 @@ export default async function ContactPage({ params }: { params: { lang: string }
         {/* What can we help with */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-white text-center mb-8">{p.helpTitle}</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {topics.map((topic) => (
               <a
                 key={topic.title}
                 href={`https://wa.me/447380310123?text=Hello,%20I%20have%20a%20question%20about:%20${encodeURIComponent(topic.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass rounded-xl p-5 border border-white/5 hover:border-purple-500/20 transition-all hover:-translate-y-1 group text-center"
+                className="glass rounded-xl p-4 sm:p-5 border border-white/5 hover:border-purple-500/20 transition-all hover:-translate-y-1 group text-center"
               >
-                <div className="text-3xl mb-2">{topic.emoji}</div>
+                <div className="text-2xl sm:text-3xl mb-2">{topic.emoji}</div>
                 <h3 className="text-white font-semibold text-sm mb-1 group-hover:text-purple-300 transition-colors">
                   {topic.title}
                 </h3>
