@@ -26,6 +26,7 @@ body {
   color: #ffffff;
   font-family: var(--font-inter);
   overflow-x: hidden;
+  overscroll-behavior-y: contain;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   min-height: 100dvh;
@@ -110,9 +111,10 @@ body {
   z-index: 0;
 }
 
-/* Smooth transitions */
+/* Smooth transitions — limit to composited properties only */
 a, button {
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease,
+              opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Minimum touch target size */
@@ -216,6 +218,30 @@ a.inline-link, span a {
     transform: none;
   }
 
+  /* Reduce blur radius — backdrop-filter is the #1 GPU cost on mobile */
+  .glass {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .glass-strong {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Strip heavy glow box-shadows — invisible on small screens anyway */
+  .glow-purple,
+  .glow-purple-sm {
+    box-shadow: none !important;
+  }
+  .text-glow {
+    text-shadow: none;
+  }
+
+  /* Skip noise pseudo-element — SVG fractal filter is expensive to composite */
+  .noise::before {
+    display: none;
+  }
+
   /* Ensure tables don't break layout */
   table {
     display: block;
@@ -224,3 +250,4 @@ a.inline-link, span a {
     -webkit-overflow-scrolling: touch;
   }
 }
+

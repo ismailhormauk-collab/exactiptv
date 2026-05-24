@@ -21,7 +21,9 @@
       "Bash(git push *)",
       "Bash(node -e \"require\\('sharp'\\)\")",
       "Bash(node -e \"const z=require\\('zlib'\\);console.log\\('zlib ok'\\)\")",
-      "Bash(node scripts/gen-favicon.mjs)"
+      "Bash(node scripts/gen-favicon.mjs)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)"
     ]
   }
 }

@@ -159,26 +159,21 @@ export default function RootLayout({
 
         {/* ── Global ambient background — fixed, GPU-composited, zero scroll cost ── */}
         <div aria-hidden="true" className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
-          {/* Base dark */}
+          {/* Base dark — always rendered */}
           <div className="absolute inset-0 bg-[#050508]" />
-          {/* Blue glow — right */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_85%_45%,rgba(37,99,235,0.10),transparent)]" />
-          {/* Violet glow — left */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_65%_at_12%_55%,rgba(109,40,217,0.10),transparent)]" />
-          {/* Cyan accent — bottom right */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_35%_30%_at_92%_92%,rgba(6,182,212,0.05),transparent)]" />
-          {/* Purple bleed — top center */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_45%_25%_at_50%_0%,rgba(139,92,246,0.07),transparent)]" />
-          {/* Subtle blue grid */}
+          {/* Gradient layers — desktop only; display:none prevents GPU paint on mobile */}
+          <div className="hidden sm:block absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_85%_45%,rgba(37,99,235,0.10),transparent)]" />
+          <div className="hidden sm:block absolute inset-0 bg-[radial-gradient(ellipse_55%_65%_at_12%_55%,rgba(109,40,217,0.10),transparent)]" />
+          <div className="hidden sm:block absolute inset-0 bg-[radial-gradient(ellipse_35%_30%_at_92%_92%,rgba(6,182,212,0.05),transparent)]" />
+          <div className="hidden sm:block absolute inset-0 bg-[radial-gradient(ellipse_45%_25%_at_50%_0%,rgba(139,92,246,0.07),transparent)]" />
           <div
-            className="absolute inset-0"
+            className="hidden sm:block absolute inset-0"
             style={{
               backgroundImage:
                 "linear-gradient(rgba(59,130,246,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.025) 1px, transparent 1px)",
               backgroundSize: "52px 52px",
             }}
           />
-          {/* Top accent line */}
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
         </div>
 

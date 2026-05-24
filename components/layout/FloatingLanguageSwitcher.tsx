@@ -173,11 +173,10 @@ export default function FloatingLanguageSwitcher() {
         aria-haspopup="listbox"
         className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center
           bg-gradient-to-br from-violet-600 to-purple-700
-          shadow-[0_4px_20px_rgba(109,40,217,0.45)]
-          ring-2 ring-violet-500/30 ring-offset-2 ring-offset-transparent
-          hover:shadow-[0_6px_28px_rgba(109,40,217,0.65)] hover:scale-110
-          active:scale-95 transition-all duration-300
-          ${open ? "scale-105 shadow-[0_6px_28px_rgba(109,40,217,0.65)]" : "animate-float"}`}
+          shadow-[0_4px_16px_rgba(109,40,217,0.4)]
+          hover:shadow-[0_6px_24px_rgba(109,40,217,0.6)] hover:scale-110
+          active:scale-95 transition-transform duration-200
+          ${open ? "scale-105" : ""}`}
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
         {/* Shimmer ring on hover */}
