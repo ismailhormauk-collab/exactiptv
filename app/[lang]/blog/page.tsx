@@ -18,6 +18,11 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   return {
     title: dict.pages.blog.title,
     description: dict.pages.blog.description,
+    keywords: [
+      "exact iptv", "best iptv", "iptv providers", "iptv subscription",
+      "iptv free trial", "premium streaming", "smart tv streaming",
+      "iptv guide", "iptv review", "iptv 2025",
+    ],
     alternates: {
       canonical: localeUrl(params.lang, '/blog'),
       languages: hreflangAlternates('/blog'),
@@ -57,8 +62,23 @@ export default async function BlogPage({ params }: { params: { lang: string } })
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "Exact IPTV Blog",
-    description: "IPTV guides, reviews, and buying advice",
+    description: "IPTV guides, reviews, and buying advice for cord-cutters",
     url: localeUrl(params.lang, '/blog'),
+    publisher: {
+      "@type": "Organization",
+      name: "Exact IPTV",
+      url: "https://exactiptv.com",
+      logo: { "@type": "ImageObject", url: "https://exactiptv.com/logo.png" },
+    },
+    blogPost: blogPosts.map(post => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.metaDescription,
+      url: localeUrl(params.lang, `/blog/${post.slug}`),
+      datePublished: post.publishedAt,
+      image: post.coverImage,
+      keywords: post.keywords?.join(", "),
+    })),
   };
 
   return (

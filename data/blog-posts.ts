@@ -9,6 +9,7 @@ export interface BlogPost {
   publishedAt: string;
   featured: boolean;
   coverImage: string;
+  keywords: string[];
   content: string;
 }
 
@@ -24,9 +25,10 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2025-01-10",
     featured: true,
     coverImage: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=1200&q=85",
+    keywords: ["exact iptv", "iptv service", "what is iptv", "iptv subscription", "iptv streaming", "premium iptv", "iptv service explained"],
     content: `## What Is IPTV?
 
-An **IPTV service** (Internet Protocol Television) delivers live TV channels and on-demand content directly over your internet connection. Unlike cable or satellite, there's no hardware to install, no long-term contract, and no signal loss during bad weather.
+An **IPTV service** ([Internet Protocol Television](https://en.wikipedia.org/wiki/Internet_Protocol_television)) delivers live TV channels and on-demand content directly over your internet connection. Unlike cable or satellite, there's no hardware to install, no long-term contract, and no signal loss during bad weather.
 
 With a good IPTV subscription, you get instant access to 50,000+ live channels, 100,000+ movies, and full series on any device — Smart TV, Firestick, Android, iPhone, Apple TV, or PC.
 
@@ -70,9 +72,33 @@ A professional IPTV service works on every major platform: Firestick, Smart TV, 
 
 Compare that to cable TV at €50–€100+ per month for fewer channels and no on-demand library.
 
+## Frequently Asked Questions
+
+### How fast does my internet need to be for IPTV?
+
+You need at least 15 Mbps for stable HD streaming and 25 Mbps or above for 4K. Most modern broadband connections easily exceed these requirements. A wired ethernet connection is preferred over Wi-Fi for consistent performance.
+
+### Is IPTV legal?
+
+Using IPTV technology itself is completely legal. The legality depends on the specific service and its content rights. Premium services like Exact IPTV operate within applicable frameworks.
+
+### How many devices can I use simultaneously?
+
+Most premium IPTV subscriptions allow 3–5 simultaneous connections, making them suitable for the entire household. Our plans include up to 5 connections by default.
+
+### Do I need special equipment?
+
+No special equipment is required. You can use devices you already own — a Firestick, Smart TV, Android phone, or laptop. See our [IPTV subscription guide](/blog/iptv-subscription-guide) for setup details.
+
 ## The Right Choice for Your Home
 
-Whether you want to watch Premier League, La Liga, 4K movies, or catch up on any series — a reliable IPTV service delivers it all in one subscription. [View our plans and pricing](/pricing) to get started in under 10 minutes.`,
+Whether you want to watch Premier League, La Liga, 4K movies, or catch up on any series — a reliable IPTV service delivers it all in one subscription. [View our plans and pricing](/pricing) to get started in under 10 minutes.
+
+## Related Guides
+
+- [Best IPTV Services in 2025: Top Picks Tested and Ranked](/blog/best-iptv-2025)
+- [IPTV Subscription Guide: Plans, Costs and What's Included](/blog/iptv-subscription-guide)
+- [IPTV Free Trial: How to Test Any Service Before You Pay](/blog/iptv-free-trial-guide)`,
   },
   {
     slug: "best-iptv-2025",
@@ -85,6 +111,7 @@ Whether you want to watch Premier League, La Liga, 4K movies, or catch up on any
     publishedAt: "2025-01-18",
     featured: true,
     coverImage: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=900&q=85",
+    keywords: ["best iptv", "best iptv 2025", "top iptv service", "iptv providers", "exact iptv", "premium streaming", "best iptv provider"],
     content: `## What Makes the Best IPTV in 2025?
 
 The streaming market is crowded. With hundreds of services claiming to offer the "best IPTV," it's easy to get confused. After testing dozens of providers, these are the criteria that consistently separate the exceptional from the mediocre.
@@ -130,9 +157,17 @@ After extensive testing, our service consistently ranks among the best for Europ
 
 The best IPTV services offer a trial period so you can test quality before spending money. [Contact us](/contact) to arrange a test before you subscribe. You'll be able to verify channel quality, buffering behaviour, and device compatibility before committing to a plan.
 
+Before choosing, it's worth understanding [how IPTV providers differ](/blog/iptv-providers-guide-2025) — not all services are built the same way, and the infrastructure behind a service has a direct impact on reliability.
+
 ## Ready to Try the Best?
 
-Stop guessing and start streaming. [View our plans](/pricing) and see why thousands of customers across Europe choose our service for their daily viewing.`,
+Stop guessing and start streaming. [View our plans](/pricing) and see why thousands of customers across Europe choose our service for their daily viewing.
+
+## Related Guides
+
+- [IPTV Providers in 2025: How to Choose One You Can Trust](/blog/iptv-providers-guide-2025)
+- [Best IPTV 2025: In-Depth Comparison and Top Picks](/blog/best-iptv-service-comparison-2025)
+- [IPTV Subscription Guide: Plans, Costs and What's Included](/blog/iptv-subscription-guide)`,
   },
   {
     slug: "iptv-providers-guide-2025",
@@ -145,9 +180,12 @@ Stop guessing and start streaming. [View our plans](/pricing) and see why thousa
     publishedAt: "2025-01-25",
     featured: false,
     coverImage: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=900&q=85",
+    keywords: ["iptv providers", "iptv provider", "iptv providers 2025", "reliable iptv", "exact iptv", "best iptv provider", "iptv provider comparison"],
     content: `## The Problem With Most IPTV Providers
 
 Search "IPTV providers" and you'll find thousands of results. Most are resellers using the same backend infrastructure with different branding. A small number operate their own servers and infrastructure. That distinction matters enormously for quality and reliability.
+
+Understanding the [IPTV supply chain](/blog/iptv-suppliers-guide) is the first step in making a smart purchasing decision.
 
 ## What Separates Good IPTV Providers From Bad Ones
 
@@ -195,7 +233,7 @@ A quality provider gives you:
 4. How do you handle channel outages?
 5. Can I trial before subscribing?
 
-Honest providers answer these clearly. Vague or defensive answers to these questions are a warning sign.
+Honest providers answer these clearly. Vague or defensive answers to these questions are a warning sign. Learn more about [what to check during an IPTV free trial](/blog/iptv-free-trial-guide) before you commit.
 
 ## Our Provider Promise
 
@@ -207,7 +245,13 @@ We have operated our own server infrastructure since 2018. When a channel goes d
 - 24/7 WhatsApp support
 - No contracts — cancel anytime
 
-[See our pricing plans](/pricing) and join thousands of satisfied subscribers across Europe.`,
+[See our pricing plans](/pricing) and join thousands of satisfied subscribers across Europe.
+
+## Related Guides
+
+- [IPTV Suppliers: How the Supply Chain Works in 2025](/blog/iptv-suppliers-guide)
+- [Best IPTV Services in 2025: Top Picks Tested and Ranked](/blog/best-iptv-2025)
+- [IPTV Free Trial: How to Test Any Service Before You Pay](/blog/iptv-free-trial-guide)`,
   },
   {
     slug: "iptv-free-trial-guide",
@@ -220,9 +264,12 @@ We have operated our own server infrastructure since 2018. When a channel goes d
     publishedAt: "2025-02-03",
     featured: false,
     coverImage: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=900&q=85",
+    keywords: ["iptv free trial", "free iptv trial", "test iptv", "iptv trial", "exact iptv free trial", "try iptv before buying"],
     content: `## Why an IPTV Free Trial Matters
 
 Choosing an IPTV service without testing it first is like buying a car without a test drive. Channel quality, buffering behaviour, and device compatibility vary enormously between providers. A free trial lets you verify everything before committing money.
+
+Before requesting a trial, make sure you understand [what separates reliable IPTV providers from unreliable ones](/blog/iptv-providers-guide-2025) — so you know what to look for during your test.
 
 ## What to Test During Your IPTV Free Trial
 
@@ -246,6 +293,20 @@ A reliable EPG showing upcoming schedules is essential for daily use. Make sure 
 
 Browse the movie and series library. Check if new releases are available and whether streams load quickly in HD or 4K.
 
+## Frequently Asked Questions About IPTV Trials
+
+### How long should a free trial be?
+
+A good trial period is 24–48 hours minimum. This gives you enough time to test at both peak and off-peak hours, across multiple devices, and with different content types.
+
+### What if no trial is offered?
+
+If a provider refuses to offer any trial, consider it a red flag. Quality services are confident in their product. Some offer short-term 1-month plans as a low-risk alternative.
+
+### Can I test 4K streams during a trial?
+
+Yes — if 4K is advertised, test it specifically. Open a 4K channel and verify it plays without buffering on your primary device.
+
 ## How to Get an IPTV Free Trial
 
 Most premium providers offer trial access in one of two ways:
@@ -262,7 +323,13 @@ We offer trial access through WhatsApp. Simply [contact us](/contact) and we'll 
 
 Our service includes 50,000+ channels, 100,000+ VOD titles, and 4K streaming — all available to test before you commit.
 
-[Get in touch](/contact) or [view our plans](/pricing) to get started.`,
+[Get in touch](/contact) or [view our plans](/pricing) to get started.
+
+## Related Guides
+
+- [What Is IPTV? Complete Guide for Beginners](/blog/iptv-service-explained)
+- [IPTV Providers in 2025: How to Choose One You Can Trust](/blog/iptv-providers-guide-2025)
+- [IPTV Subscription Guide: Plans, Costs and What's Included](/blog/iptv-subscription-guide)`,
   },
   {
     slug: "iptv-subscription-guide",
@@ -275,9 +342,12 @@ Our service includes 50,000+ channels, 100,000+ VOD titles, and 4K streaming —
     publishedAt: "2025-02-10",
     featured: false,
     coverImage: "https://images.unsplash.com/photo-1615986201152-7686a4867f30?auto=format&fit=crop&w=900&q=85",
+    keywords: ["iptv subscription", "iptv plans", "iptv pricing", "buy iptv", "exact iptv subscription", "iptv subscription cost", "iptv monthly plan"],
     content: `## What Is an IPTV Subscription?
 
 An **IPTV subscription** gives you access to live TV channels and on-demand content streamed over the internet. Think of it like Netflix — but instead of movies and series only, you also get 50,000+ live channels including sports, news, and international programming.
+
+If you're not yet familiar with how IPTV works, read our [complete IPTV guide](/blog/iptv-service-explained) before choosing a plan.
 
 Unlike cable or satellite, an IPTV subscription:
 
@@ -322,11 +392,39 @@ Subscriptions come in monthly, quarterly, and annual options. Longer plans offer
 
 No technician, no hardware, no complex setup.
 
+## Frequently Asked Questions
+
+### Can I cancel my IPTV subscription at any time?
+
+Yes. Premium IPTV subscriptions are flexible with no long-term contracts. Monthly plans can be cancelled without penalty. Longer plans are paid upfront for the discounted rate.
+
+### Do I need special equipment to subscribe?
+
+No hardware installation is required. Your existing Smart TV, Firestick, Android device, tablet, or computer is all you need.
+
+### What payment methods are accepted?
+
+Most premium providers accept credit/debit cards, PayPal, bank transfer, and crypto. We support all major payment methods for your convenience.
+
+### How quickly will I receive my credentials?
+
+After payment confirmation, credentials are typically sent within 5 minutes via WhatsApp. Most customers are streaming within 10 minutes of payment.
+
+### Is a free trial available?
+
+Yes — [contact us](/contact) via WhatsApp to arrange a test before subscribing. See our [IPTV free trial guide](/blog/iptv-free-trial-guide) for what to check during your test.
+
 ## Is an IPTV Subscription Worth It?
 
 If you're paying €50+ per month for cable or satellite and still missing channels you want — yes, absolutely. An IPTV subscription gives you more content, more flexibility, and significantly lower costs.
 
-[View our subscription plans](/pricing) and get started today. Most customers are watching within 10 minutes of payment.`,
+[View our subscription plans](/pricing) and get started today. Most customers are watching within 10 minutes of payment.
+
+## Related Guides
+
+- [What Is IPTV? Complete Guide for Beginners](/blog/iptv-service-explained)
+- [Best IPTV Services in 2025: Top Picks Tested and Ranked](/blog/best-iptv-2025)
+- [IPTV Free Trial: How to Test Any Service Before You Pay](/blog/iptv-free-trial-guide)`,
   },
   {
     slug: "best-iptv-service-comparison-2025",
@@ -339,6 +437,7 @@ If you're paying €50+ per month for cable or satellite and still missing chann
     publishedAt: "2025-02-17",
     featured: true,
     coverImage: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85",
+    keywords: ["best iptv service", "iptv comparison", "best iptv 2025", "premium streaming", "exact iptv", "iptv service comparison", "smart tv streaming"],
     content: `## Choosing the Best IPTV in 2025
 
 The question isn't just "what's the best IPTV service" — it's what's best **for you**. Heavy sports fans need different things than movie enthusiasts, and expats keeping up with home country content have different priorities again. Here's a detailed breakdown by use case.
@@ -395,7 +494,15 @@ Combining channel quality, uptime, VOD depth, support responsiveness, and pricin
 
 Switching is straightforward. Most IPTV apps (TiviMate, IPTV Smarters) let you add a new source without removing your existing one. Test ours side-by-side before fully switching.
 
-[View our plans](/pricing) · [Request a trial](/contact)`,
+For a deeper look at individual provider reviews, see our [Guru IPTV review](/blog/guru-iptv-review-2025) and [Marinios IPTV review](/blog/marinios-iptv-review) to understand how specific services perform in practice.
+
+[View our plans](/pricing) · [Request a trial](/contact)
+
+## Related Guides
+
+- [Best IPTV in 2025: What to Look For and Where to Find It](/blog/best-iptv-2025)
+- [IPTV Providers in 2025: How to Choose One You Can Trust](/blog/iptv-providers-guide-2025)
+- [IPTV Subscription Guide: Plans, Costs and What's Included](/blog/iptv-subscription-guide)`,
   },
   {
     slug: "iptv-org-explained",
@@ -408,6 +515,7 @@ Switching is straightforward. Most IPTV apps (TiviMate, IPTV Smarters) let you a
     publishedAt: "2025-03-01",
     featured: false,
     coverImage: "https://images.unsplash.com/photo-1562408590-e32931084e23?auto=format&fit=crop&w=900&q=85",
+    keywords: ["iptv org", "iptv-org", "free iptv", "iptv providers", "exact iptv", "open source iptv", "free iptv streams"],
     content: `## What Is iptv-org?
 
 **iptv-org** (hosted at github.com/iptv-org/iptv) is an open-source project that maintains a public database of free IPTV channel streams from around the world. It's not a subscription service — it's a community-maintained list of publicly available stream URLs that anyone can access for free.
@@ -446,7 +554,10 @@ iptv-org provides live stream URLs only. There is no on-demand movie or series l
 ## iptv-org vs. a Premium IPTV Provider
 
 **iptv-org:** Free, unreliable streams, no sports, no VOD, no support.
+
 **Premium IPTV:** From €20/month, 99.9% uptime, 50,000+ channels, 100,000+ VOD titles, 24/7 support.
+
+For a comprehensive guide to what a premium service actually includes, read our [IPTV subscription guide](/blog/iptv-subscription-guide).
 
 ## When iptv-org Makes Sense
 
@@ -454,7 +565,15 @@ iptv-org works well for accessing free public broadcasts — local news channels
 
 ## When You Need a Paid Service
 
-If you want sports, premium entertainment, reliable streams, or any on-demand content — a paid IPTV subscription is the only practical option. [See our plans](/pricing) starting from €20 for your first month, with a free trial available on request.`,
+If you want sports, premium entertainment, reliable streams, or any on-demand content — a paid IPTV subscription is the only practical option. Understanding [what makes IPTV providers reliable](/blog/iptv-providers-guide-2025) will help you choose wisely.
+
+[See our plans](/pricing) starting from €20 for your first month, with a free trial available on request.
+
+## Related Guides
+
+- [What Is IPTV? Complete Guide for Beginners](/blog/iptv-service-explained)
+- [Best IPTV Services in 2025: Top Picks Tested and Ranked](/blog/best-iptv-2025)
+- [IPTV Providers in 2025: How to Choose One You Can Trust](/blog/iptv-providers-guide-2025)`,
   },
   {
     slug: "guru-iptv-review-2025",
@@ -467,6 +586,7 @@ If you want sports, premium entertainment, reliable streams, or any on-demand co
     publishedAt: "2025-03-10",
     featured: false,
     coverImage: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=85",
+    keywords: ["guru iptv", "guru iptv review", "guru iptv 2025", "iptv providers", "exact iptv", "iptv review", "best iptv alternative"],
     content: `## What Is Guru IPTV?
 
 **Guru IPTV** is a subscription-based IPTV service that has circulated in the streaming community for several years. It positions itself as a mid-range provider with access to European and international channels. Here's our honest assessment after thorough testing.
@@ -487,6 +607,8 @@ The VOD offering is present but not a standout feature. The library is smaller t
 
 Based on community reports and our testing, Guru IPTV performance is acceptable under normal conditions but degrades during peak times. Server infrastructure appears to be third-party reseller based rather than owned infrastructure, which explains the inconsistency.
 
+Understanding [how IPTV suppliers and resellers work](/blog/iptv-suppliers-guide) helps explain why reseller-based services tend to underperform during peak hours.
+
 ### Buffering
 
 Users report occasional to frequent buffering at peak hours, particularly during major sports events. This is the most common complaint across streaming communities discussing Guru IPTV.
@@ -503,6 +625,8 @@ Support quality varies significantly depending on which reseller you purchase th
 
 Guru IPTV is a functional service for casual viewers who primarily watch general entertainment channels at non-peak hours. For sports enthusiasts or anyone requiring consistent HD/4K quality during major events, the reliability limitations are a significant drawback.
 
+For a full comparison of the best services available, read our [best IPTV 2025 comparison](/blog/best-iptv-service-comparison-2025).
+
 ## A More Reliable Alternative
 
 Our service offers everything Guru IPTV provides and significantly more:
@@ -514,7 +638,13 @@ Our service offers everything Guru IPTV provides and significantly more:
 - 24/7 WhatsApp support with 5-minute response times
 - Transparent pricing with no reseller markup
 
-[Compare our plans](/pricing) or [contact us](/contact) for a free trial.`,
+[Compare our plans](/pricing) or [contact us](/contact) for a free trial.
+
+## Related Guides
+
+- [Best IPTV 2025: Full In-Depth Comparison](/blog/best-iptv-service-comparison-2025)
+- [Best IPTV in 2025: What to Look For and Where to Find It](/blog/best-iptv-2025)
+- [IPTV Providers in 2025: How to Choose One You Can Trust](/blog/iptv-providers-guide-2025)`,
   },
   {
     slug: "marinios-iptv-review",
@@ -527,6 +657,7 @@ Our service offers everything Guru IPTV provides and significantly more:
     publishedAt: "2025-03-18",
     featured: false,
     coverImage: "https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?auto=format&fit=crop&w=900&q=85",
+    keywords: ["marinios iptv", "marinios iptv review", "french iptv", "arabic iptv", "exact iptv", "iptv france", "best french iptv"],
     content: `## What Is Marinios IPTV?
 
 **Marinios IPTV** is a subscription service that has developed a following primarily among European and Arabic-speaking audiences. It offers channels spanning European sports, entertainment, and Middle Eastern content, with a particular focus on French and Arabic-language viewers.
@@ -567,11 +698,19 @@ Marinios serves a specific audience reasonably well: **French and Arabic-speakin
 
 Sports fans, 4K streaming enthusiasts, and viewers needing comprehensive English-language content will likely be disappointed. The service's specialisation is also its primary limitation.
 
+For a full market comparison, our [best IPTV 2025 comparison](/blog/best-iptv-service-comparison-2025) covers the top services across all audience types.
+
 ## Our Verdict
 
 Marinios IPTV is a competent niche service that delivers reasonably for its target audience. If your primary interest aligns with its content focus (French/Arabic), it's worth considering. For a more complete alternative with broader coverage across all categories and languages:
 
-[View our plans here](/pricing) — we offer French, Arabic, English, Spanish, German, and 50+ language categories in one subscription, starting from €20/month.`,
+[View our plans here](/pricing) — we offer French, Arabic, English, Spanish, German, and 50+ language categories in one subscription, starting from €20/month.
+
+## Related Guides
+
+- [Best IPTV 2025: Full In-Depth Comparison](/blog/best-iptv-service-comparison-2025)
+- [Guru IPTV Review 2025: Performance and Reliability](/blog/guru-iptv-review-2025)
+- [IPTV Providers in 2025: How to Choose One You Can Trust](/blog/iptv-providers-guide-2025)`,
   },
   {
     slug: "iptv-suppliers-guide",
@@ -584,6 +723,7 @@ Marinios IPTV is a competent niche service that delivers reasonably for its targ
     publishedAt: "2025-03-25",
     featured: false,
     coverImage: "https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=900&q=85",
+    keywords: ["iptv suppliers", "iptv supply chain", "iptv providers", "exact iptv", "iptv reseller", "find iptv supplier", "reliable iptv supplier"],
     content: `## What Are IPTV Suppliers?
 
 **IPTV suppliers** are companies that operate IPTV infrastructure — maintaining servers, sourcing channels, and providing access either directly to consumers or through resellers. Understanding the supply chain helps you make smarter purchasing decisions.
@@ -636,7 +776,7 @@ The further down the supply chain you go:
 **4.** How quickly do you resolve channel outages?
 **5.** Can I trial the service before committing?
 
-Honest suppliers answer these clearly. Vague or evasive responses are a warning signal.
+Honest suppliers answer these clearly. Vague or evasive responses are a warning signal. See our full [IPTV providers guide](/blog/iptv-providers-guide-2025) for a complete checklist of what to look for.
 
 ## Our Position in the Market
 
@@ -644,7 +784,13 @@ We operate our own server infrastructure and have been serving customers since 2
 
 That means faster issue resolution, better uptime, and more consistent quality.
 
-[View our pricing and plans](/pricing) or [get in touch](/contact) to arrange a free trial before subscribing.`,
+[View our pricing and plans](/pricing) or [get in touch](/contact) to arrange a free trial before subscribing.
+
+## Related Guides
+
+- [IPTV Providers in 2025: How to Choose One You Can Trust](/blog/iptv-providers-guide-2025)
+- [Best IPTV Services in 2025: Top Picks Tested and Ranked](/blog/best-iptv-2025)
+- [IPTV Free Trial: How to Test Any Service Before You Pay](/blog/iptv-free-trial-guide)`,
   },
 ];
 
@@ -654,5 +800,8 @@ export const getBlogPost = (slug: string): BlogPost | undefined =>
 export const getFeaturedPosts = (): BlogPost[] =>
   blogPosts.filter(p => p.featured);
 
-export const getRelatedPosts = (currentSlug: string, limit = 3): BlogPost[] =>
-  blogPosts.filter(p => p.slug !== currentSlug).slice(0, limit);
+export const getRelatedPosts = (currentSlug: string, currentCategory = '', limit = 3): BlogPost[] => {
+  const sameCat = blogPosts.filter(p => p.slug !== currentSlug && p.category === currentCategory);
+  const others = blogPosts.filter(p => p.slug !== currentSlug && p.category !== currentCategory);
+  return [...sameCat, ...others].slice(0, limit);
+};

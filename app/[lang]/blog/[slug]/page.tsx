@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Clock, Calendar, ArrowLeft, MessageCircle, ChevronRight } from "lucide-react";
+import { Clock, Calendar, ArrowLeft, ArrowRight, MessageCircle, ChevronRight } from "lucide-react";
 import { blogPosts, getBlogPost, getRelatedPosts } from "@/data/blog-posts";
 import Script from "next/script";
 import { LOCALES } from "@/locales/types";
@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.metaTitle,
     description: post.metaDescription,
+    keywords: post.keywords,
     alternates: {
       canonical: localeUrl(params.lang, `/blog/${post.slug}`),
       languages: hreflangAlternates(`/blog/${post.slug}`),
@@ -72,8 +73,10 @@ function renderContent(md: string, lang: string): string {
     .replace(/^\- (.+)$/gm, '<li class="text-slate-300 text-sm leading-relaxed pl-1">$1</li>')
     .replace(/(<li[\s\S]+?<\/li>)/g, '<ul class="list-disc list-inside space-y-1.5 my-3 ml-2">$1</ul>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, url) => {
-      const href = url.startsWith('/') ? localePath(lang, url) : url;
-      return `<a href="${href}" class="text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors">${text}</a>`;
+      const isInternal = url.startsWith('/');
+      const href = isInternal ? localePath(lang, url) : url;
+      const attrs = isInternal ? '' : ' target="_blank" rel="nofollow noopener noreferrer"';
+      return `<a href="${href}"${attrs} class="text-violet-400 hover:text-violet-300 underline underline-offset-2 transition-colors">${text}</a>`;
     })
     .replace(/\n\n/g, '</p><p class="text-slate-300 text-[15px] leading-relaxed my-4">')
     .replace(/\n/g, ' ');
@@ -83,7 +86,7 @@ export default function BlogPostPage({ params }: Props) {
   const post = getBlogPost(params.slug);
   if (!post) notFound();
 
-  const related = getRelatedPosts(post.slug, 3);
+  const related = getRelatedPosts(post.slug, post.category, 3);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -93,9 +96,16 @@ export default function BlogPostPage({ params }: Props) {
     image: post.coverImage,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
-    author: { "@type": "Organization", name: "Exact IPTV" },
-    publisher: { "@type": "Organization", name: "Exact IPTV", logo: { "@type": "ImageObject", url: "https://exactiptv.com/logo.png" } },
+    keywords: post.keywords?.join(", "),
+    author: { "@type": "Organization", name: "Exact IPTV", url: "https://exactiptv.com" },
+    publisher: {
+      "@type": "Organization",
+      name: "Exact IPTV",
+      logo: { "@type": "ImageObject", url: "https://exactiptv.com/logo.png" },
+    },
     mainEntityOfPage: { "@type": "WebPage", "@id": localeUrl(params.lang, `/blog/${post.slug}`) },
+    articleSection: post.category,
+    inLanguage: params.lang,
   };
 
   const breadcrumbSchema = {
@@ -128,7 +138,7 @@ export default function BlogPostPage({ params }: Props) {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/15" />
           {/* Breadcrumb overlay */}
           <div className="absolute bottom-0 left-0 right-0 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-            <nav className="flex items-center gap-2 text-xs text-slate-400 mb-4">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-400 mb-4">
               <Link href={localePath(params.lang, '/')} className="hover:text-violet-400 transition-colors">Home</Link>
               <ChevronRight className="w-3 h-3" />
               <Link href={localePath(params.lang, '/blog')} className="hover:text-violet-400 transition-colors">Blog</Link>
@@ -245,7 +255,7 @@ export default function BlogPostPage({ params }: Props) {
                 </a>
               </div>
 
-              {/* Related articles */}
+              {/* Sidebar related articles */}
               <div>
                 <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-3">Related Articles</p>
                 <div className="space-y-2">
@@ -255,7 +265,6 @@ export default function BlogPostPage({ params }: Props) {
                       href={localePath(params.lang, `/blog/${rel.slug}`)}
                       className="group flex gap-3 items-start rounded-xl p-3 border border-white/[0.05] hover:border-violet-500/25 bg-white/[0.02] transition-all"
                     >
-                      {/* Fixed-size thumbnail, absolute-fill */}
                       <div className="relative w-14 h-14 rounded-lg overflow-hidden bg-slate-900 flex-shrink-0">
                         <Image
                           src={rel.coverImage}
@@ -279,6 +288,55 @@ export default function BlogPostPage({ params }: Props) {
             </aside>
 
           </div>
+
+          {/* ── Related Articles — full-width bottom section ── */}
+          {related.length > 0 && (
+            <section className="mt-16 pt-10 border-t border-white/[0.07]">
+              <h2 className="text-white font-bold text-xl mb-6">More Articles You May Like</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                {related.map(rel => (
+                  <Link
+                    key={rel.slug}
+                    href={localePath(params.lang, `/blog/${rel.slug}`)}
+                    className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.07] bg-slate-950 hover:border-violet-500/40 hover:shadow-[0_0_0_1px_rgba(139,92,246,0.12),0_4px_28px_rgba(109,40,217,0.14)] hover:-translate-y-1 transition-all duration-300"
+                  >
+                    <div className="relative w-full aspect-video overflow-hidden bg-slate-900">
+                      <Image
+                        src={rel.coverImage}
+                        alt={rel.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 33vw"
+                        loading="lazy"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/10 to-transparent" />
+                      <div className="absolute top-3 left-3">
+                        <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full border backdrop-blur-md ${categoryStyle[rel.category] ?? defaultCategoryStyle}`}>
+                          {rel.category}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex flex-col flex-1 p-5">
+                      <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-3">
+                        <Clock className="w-3 h-3" />
+                        {rel.readTime}
+                      </div>
+                      <h3 className="text-white font-bold text-sm leading-snug mb-2 group-hover:text-violet-200 transition-colors line-clamp-2">
+                        {rel.title}
+                      </h3>
+                      <p className="text-slate-400 text-xs leading-relaxed line-clamp-2 flex-1 mb-4">
+                        {rel.excerpt}
+                      </p>
+                      <div className="flex items-center gap-1.5 text-violet-400 text-xs font-semibold group-hover:gap-2.5 transition-all mt-auto">
+                        Read Article <ArrowRight className="w-3 h-3" />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
         </div>
       </div>
     </>
