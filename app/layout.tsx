@@ -88,15 +88,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: '/favicon.ico',  sizes: '16x16 32x32', type: 'image/x-icon' },
-      { url: '/favicon.svg',  type: 'image/svg+xml' },
-      { url: '/favicon-192.png', sizes: '192x192', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-icon', sizes: '180x180', type: 'image/png' },
-    ],
+    icon: '/favicon.ico',
     shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
   verification: {
