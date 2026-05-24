@@ -23,7 +23,11 @@
       "Bash(node -e \"const z=require\\('zlib'\\);console.log\\('zlib ok'\\)\")",
       "Bash(node scripts/gen-favicon.mjs)",
       "Bash(npx tsc *)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(git -C /Users/ismail/Desktop/exactiptv.com status)",
+      "Bash(git -C /Users/ismail/Desktop/exactiptv.com add app/layout.tsx public/apple-touch-icon.png)",
+      "Bash(git -C /Users/ismail/Desktop/exactiptv.com commit -m ' *)",
+      "Bash(git -C /Users/ismail/Desktop/exactiptv.com push origin main)"
     ]
   }
 }
