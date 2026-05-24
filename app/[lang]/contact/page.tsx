@@ -83,19 +83,22 @@ export default async function ContactPage({ params }: { params: { lang: string }
           {supportOptions.map((option) => {
             const Icon = option.icon;
             return (
-              <div key={option.title} className="glass rounded-2xl p-5 sm:p-8 border border-white/10 text-center flex flex-col items-center">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 glass rounded-2xl flex items-center justify-center mb-4 border border-white/10">
-                  <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-purple-400" />
+              <div
+                key={option.title}
+                className="glass rounded-2xl border border-white/10 p-6 sm:p-8 flex flex-col items-center text-center min-h-[340px]"
+              >
+                <div className="w-16 h-16 glass rounded-2xl flex items-center justify-center border border-white/10 mb-6 shrink-0">
+                  <Icon className="w-8 h-8 text-purple-400" />
                 </div>
-                <h2 className="text-white font-bold text-lg sm:text-xl mb-2">{option.title}</h2>
-                <p className="text-gray-400 text-sm mb-3 max-w-xs">{option.description}</p>
+                <h2 className="text-white font-bold text-xl mb-3 leading-snug">{option.title}</h2>
+                <p className="text-gray-400 text-sm leading-relaxed mb-4 w-full max-w-xs">{option.description}</p>
                 <p className="text-purple-400 font-semibold text-sm mb-1">{option.contact}</p>
-                <p className={`text-xs font-medium mb-5 ${option.availableColor}`}>{option.available}</p>
+                <p className={`text-xs font-medium mb-6 ${option.availableColor}`}>{option.available}</p>
                 <a
                   href={option.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex w-full sm:w-auto justify-center items-center gap-2 px-6 py-3 ${option.buttonClass} font-bold rounded-xl transition-all hover:scale-105 shadow-lg`}
+                  className={`mt-auto w-full flex items-center justify-center gap-2 px-6 py-3 ${option.buttonClass} font-bold rounded-xl transition-all hover:scale-105 shadow-lg text-sm sm:text-base`}
                 >
                   <Icon className="w-4 h-4 shrink-0" />
                   {option.buttonText}
@@ -115,13 +118,13 @@ export default async function ContactPage({ params }: { params: { lang: string }
                 href={`https://wa.me/447380310123?text=Hello,%20I%20have%20a%20question%20about:%20${encodeURIComponent(topic.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass rounded-xl p-4 sm:p-5 border border-white/5 hover:border-purple-500/20 transition-all hover:-translate-y-1 group text-center"
+                className="glass rounded-xl p-5 border border-white/5 hover:border-purple-500/20 transition-all hover:-translate-y-1 group flex flex-col items-center text-center min-h-[120px]"
               >
-                <div className="text-2xl sm:text-3xl mb-2">{topic.emoji}</div>
-                <h3 className="text-white font-semibold text-sm mb-1 group-hover:text-purple-300 transition-colors">
+                <div className="text-3xl mb-3 leading-none shrink-0">{topic.emoji}</div>
+                <h3 className="text-white font-semibold text-sm mb-1.5 leading-snug group-hover:text-purple-300 transition-colors w-full">
                   {topic.title}
                 </h3>
-                <p className="text-gray-500 text-xs">{topic.desc}</p>
+                <p className="text-gray-500 text-xs leading-relaxed w-full">{topic.desc}</p>
               </a>
             ))}
           </div>
