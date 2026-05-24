@@ -26,7 +26,6 @@ body {
   color: #ffffff;
   font-family: var(--font-inter);
   overflow-x: hidden;
-  overscroll-behavior-y: contain;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   min-height: 100dvh;
@@ -111,10 +110,9 @@ body {
   z-index: 0;
 }
 
-/* Smooth transitions — limit to composited properties only */
+/* Smooth transitions */
 a, button {
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease,
-              opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 /* Minimum touch target size */

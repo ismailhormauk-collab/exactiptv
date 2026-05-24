@@ -2,28 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { ChevronRight, Sparkles, Star } from "lucide-react";
 import dynamic from "next/dynamic";
 import type { HeroDict, Locale } from "@/locales/types";
 import { localePath } from "@/lib/url";
 
-// Only loaded on desktop (lg:) — keeps framer-motion out of mobile bundles
+// Lazy-loaded so framer-motion is a separate JS chunk
 const LaptopMockup = dynamic(() => import("./LaptopMockup"), {
   ssr: false,
-  loading: () => null,
+  // Placeholder reserves the exact column space so layout never shifts
+  loading: () => <div className="w-full max-w-[520px] h-[440px]" aria-hidden="true" />,
 });
 
 export default function Hero({ dict, lang }: { dict: HeroDict; lang: Locale }) {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const mql = window.matchMedia("(min-width: 1024px)");
-    setIsDesktop(mql.matches);
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
 
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center">
@@ -141,7 +132,7 @@ export default function Hero({ dict, lang }: { dict: HeroDict; lang: Locale }) {
 
           {/* ── RIGHT — desktop only ── */}
           <div className="hidden lg:flex relative order-2 items-center justify-end lg:pl-6">
-            {isDesktop && <LaptopMockup dict={dict} />}
+            <LaptopMockup dict={dict} />
           </div>
 
         </div>
