@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import { getFeaturedPosts } from "@/data/blog-posts";
 import { localePath } from "@/lib/url";
+import BlogThumbnail from "@/components/blog/BlogThumbnail";
 
 const categoryStyle: Record<string, string> = {
   "Guide":        "text-violet-400 bg-violet-500/10 border-violet-500/20",
@@ -47,19 +47,12 @@ export default function BlogPreview({ lang = "en" }: { lang?: string }) {
               href={localePath(lang, `/blog/${post.slug}`)}
               className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.07] bg-slate-950 hover:border-violet-500/40 hover:shadow-[0_0_0_1px_rgba(139,92,246,0.12),0_4px_28px_rgba(109,40,217,0.14)] hover:-translate-y-1 transition-all duration-300"
             >
-              {/* Thumbnail */}
-              <div className="relative w-full aspect-video overflow-hidden bg-slate-900">
-                <Image
-                  src={post.coverImage}
-                  alt={post.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-violet-900/0 group-hover:bg-violet-900/10 transition-colors duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/10 to-transparent" />
-                <div className="absolute top-3 left-3">
+              {/* Branded thumbnail */}
+              <div className="relative w-full aspect-video overflow-hidden">
+                <BlogThumbnail slug={post.slug} category={post.category} />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-violet-900/10 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                <div className="absolute top-3 left-3 z-10">
                   <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full border backdrop-blur-md ${categoryStyle[post.category] ?? defaultCategoryStyle}`}>
                     {post.category}
                   </span>

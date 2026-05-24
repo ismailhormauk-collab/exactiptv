@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Clock, Calendar, ArrowLeft, ArrowRight, MessageCircle, ChevronRight } from "lucide-react";
 import { blogPosts, getBlogPost, getRelatedPosts } from "@/data/blog-posts";
 import Script from "next/script";
 import { LOCALES } from "@/locales/types";
 import { localePath, localeUrl, hreflangAlternates } from "@/lib/url";
+import BlogThumbnail from "@/components/blog/BlogThumbnail";
 
 interface Props {
   params: { lang: string; slug: string };
@@ -125,18 +125,16 @@ export default function BlogPostPage({ params }: Props) {
 
       <div className="min-h-screen pt-20 pb-24">
 
-        {/* ── Cover image hero ──────────────────────────────────────── */}
-        <div className="relative w-full overflow-hidden bg-slate-950" style={{ paddingTop: 'clamp(220px, 34vw, 480px)' }}>
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/15" />
-          {/* Breadcrumb overlay */}
+        {/* ── Branded hero ──────────────────────────────────────────── */}
+        <div className="relative w-full overflow-hidden" style={{ paddingTop: 'clamp(220px, 34vw, 480px)' }}>
+
+          {/* Branded thumbnail fills the container */}
+          <BlogThumbnail slug={post.slug} category={post.category} variant="hero" />
+
+          {/* Dark gradient overlay for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10 pointer-events-none" />
+
+          {/* Breadcrumb + title overlay */}
           <div className="absolute bottom-0 left-0 right-0 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-400 mb-4">
               <Link href={localePath(params.lang, '/')} className="hover:text-violet-400 transition-colors">Home</Link>
@@ -223,10 +221,10 @@ export default function BlogPostPage({ params }: Props) {
                 <h3 className="text-white font-bold text-sm mb-4">Get Started Today</h3>
                 <div className="space-y-2 mb-5">
                   {[
-                    { plan: "1 Month",  price: "€20" },
-                    { plan: "3 Months", price: "€35" },
-                    { plan: "6 Months", price: "€45", popular: true },
-                    { plan: "12 Months",price: "€65" },
+                    { plan: "1 Month",   price: "€20" },
+                    { plan: "3 Months",  price: "€35" },
+                    { plan: "6 Months",  price: "€45", popular: true },
+                    { plan: "12 Months", price: "€65" },
                   ].map(item => (
                     <a
                       key={item.plan}
@@ -265,15 +263,9 @@ export default function BlogPostPage({ params }: Props) {
                       href={localePath(params.lang, `/blog/${rel.slug}`)}
                       className="group flex gap-3 items-start rounded-xl p-3 border border-white/[0.05] hover:border-violet-500/25 bg-white/[0.02] transition-all"
                     >
-                      <div className="relative w-14 h-14 rounded-lg overflow-hidden bg-slate-900 flex-shrink-0">
-                        <Image
-                          src={rel.coverImage}
-                          alt={rel.title}
-                          fill
-                          sizes="56px"
-                          loading="lazy"
-                          className="object-cover transition-transform duration-300 group-hover:scale-[1.08]"
-                        />
+                      {/* Branded sidebar thumbnail */}
+                      <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
+                        <BlogThumbnail slug={rel.slug} category={rel.category} variant="sidebar" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-slate-300 text-xs font-medium group-hover:text-violet-300 transition-colors line-clamp-2 leading-snug">
@@ -300,17 +292,11 @@ export default function BlogPostPage({ params }: Props) {
                     href={localePath(params.lang, `/blog/${rel.slug}`)}
                     className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.07] bg-slate-950 hover:border-violet-500/40 hover:shadow-[0_0_0_1px_rgba(139,92,246,0.12),0_4px_28px_rgba(109,40,217,0.14)] hover:-translate-y-1 transition-all duration-300"
                   >
-                    <div className="relative w-full aspect-video overflow-hidden bg-slate-900">
-                      <Image
-                        src={rel.coverImage}
-                        alt={rel.title}
-                        fill
-                        sizes="(max-width: 640px) 100vw, 33vw"
-                        loading="lazy"
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/10 to-transparent" />
-                      <div className="absolute top-3 left-3">
+                    <div className="relative w-full aspect-video overflow-hidden">
+                      <BlogThumbnail slug={rel.slug} category={rel.category} />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-violet-900/10 transition-colors duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                      <div className="absolute top-3 left-3 z-10">
                         <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full border backdrop-blur-md ${categoryStyle[rel.category] ?? defaultCategoryStyle}`}>
                           {rel.category}
                         </span>
